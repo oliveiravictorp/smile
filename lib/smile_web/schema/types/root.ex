@@ -6,6 +6,10 @@ defmodule SmileWeb.Schema.Types.Root do
   import_types SmileWeb.Schema.Types.User
 
   object :root_query do
+    field :list_user, list_of(:user) do
+      resolve &Resolvers.User.list_user/2
+    end
+
     field :list_camera, list_of(:camera) do
       arg(:filter, :string)
       arg(:order, :string, default_value: "asc")

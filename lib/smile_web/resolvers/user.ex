@@ -1,6 +1,10 @@
 defmodule SmileWeb.Resolvers.User do
   alias Smile.Users
 
+  def list_user(_params, _context) do
+    Smile.Users.ListUser.call()
+  end
+
   def notify_hikvision_users(_params, _context) do
     case Users.GetHikvision.call() do
       [] ->
