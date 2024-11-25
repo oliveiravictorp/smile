@@ -2,8 +2,8 @@ defmodule SmileWeb.Resolvers.Camera do
   alias Smile.Cameras
 
   # Queries
-  def list_user_cameras(%Smile.User{} = user, _args, _context) do
-    Smile.Cameras.ListUserCameras.call(user)
+  def list_user_cameras(%Smile.User{} = user, %{filter: filter, order: order}, _context) do
+    Smile.Cameras.ListUserCameras.call(user, filter, order)
   end
 
   def list(%{filter: filter, order: order, limit: limit, offset: offset}, _context) do

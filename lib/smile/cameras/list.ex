@@ -16,26 +16,26 @@ defmodule Smile.Cameras.List do
     end
   end
 
-  # defp verify_limit(query, nil, _offset), do: query
+  def filter_by_name(query, nil), do: query
+
+  def filter_by_name(query, filter) do
+    from c in query, where: ilike(c.name, ^"%#{filter}%")
+  end
+
+  def order_by_name(query, order) when order in ["asc", "desc"] do
+    from c in query, order_by: [{^String.to_atom(order), :name}]
+  end
+
+  def order_by_name(query, _invalid_order) do
+    Logger.warning("Invalid order, default order: 'asc'")
+    order_by_name(query, "asc")
+  end
+
+  defp verify_limit(query, nil, _offset), do: query
 
   defp verify_limit(query, limit, offset) do
     query
     |> limit(^limit)
     |> offset(^offset)
-  end
-
-  defp filter_by_name(query, nil), do: query
-
-  defp filter_by_name(query, filter) do
-    from c in query, where: ilike(c.name, ^"%#{filter}%")
-  end
-
-  defp order_by_name(query, order) when order in ["asc", "desc"] do
-    from c in query, order_by: [{^String.to_atom(order), :name}]
-  end
-
-  defp order_by_name(query, _invalid_order) do
-    Logger.warning("Invalid order, default order: 'asc'")
-    order_by_name(query, "asc")
   end
 end

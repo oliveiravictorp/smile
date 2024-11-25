@@ -8,6 +8,9 @@ defmodule SmileWeb.Schema.Types.User do
     field :active, non_null(:boolean)
 
     field :cameras, list_of(:camera) do
+      arg(:filter, :string)
+      arg(:order, :string, default_value: "asc")
+
       resolve &Resolvers.Camera.list_user_cameras/3
     end
   end
