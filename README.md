@@ -1,4 +1,4 @@
-# Smile
+# [Smile](https://cdn.dribbble.com/users/336834/screenshots/3948692/smile_dribbble.png)
 
 To start your Phoenix server:
 
