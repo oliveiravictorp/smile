@@ -48,7 +48,8 @@ defmodule Smile.MixProject do
       {:absinthe, "~> 1.7"},
       {:absinthe_plug, "~> 1.5"},
       {:faker, "~> 0.18.0"},
-      {:guardian, "~> 2.3"}
+      {:guardian, "~> 2.3"},
+      {:ex_doc, "~> 0.34", only: :dev, runtime: false}
     ]
   end
 
