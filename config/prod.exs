@@ -11,3 +11,6 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+
+# Configures the CORS
+config :smile, SmileWeb.Plugs.SetCorsHeaders, allowed_origins: [""]

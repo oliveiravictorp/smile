@@ -1,5 +1,6 @@
 defmodule SmileWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :smile
+  alias SmileWeb.Plugs
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -47,5 +48,9 @@ defmodule SmileWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
+
+  plug Plugs.SetCorsHeaders
+  plug Plugs.HandleOptions
+
   plug SmileWeb.Router
 end

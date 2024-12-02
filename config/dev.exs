@@ -26,6 +26,9 @@ config :smile, SmileWeb.Endpoint,
   secret_key_base: "th4uEXAFXIdPvhOxnKHNtVfHMaYqGVwo1YyGRYbSSyilzE+EBgBnkkq//Phll4VG",
   watchers: []
 
+# Configures the CORS
+config :smile, SmileWeb.Plugs.SetCorsHeaders, allowed_origins: ["http://localhost:5173"]
+
 # ## SSL Support
 #
 # In order to use HTTPS in development, a self-signed
